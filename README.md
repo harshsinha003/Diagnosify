@@ -153,14 +153,6 @@ The application uses an ensemble of three algorithms:
 - **Support Vector Machine (SVM)**
 - **Logistic Regression**
 
-The model with the highest accuracy is automatically selected and saved as `model.pkl`.
-
-## 🔒 Security Features
-
-- CORS configured for secure cross-origin requests
-- Input validation and error handling
-- Environment-based configuration
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -172,12 +164,6 @@ The model with the highest accuracy is automatically selected and saved as `mode
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Create an issue in the GitHub repository
-- Contact the development team
 
 ## 🙏 Acknowledgments
 
