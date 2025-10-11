@@ -66,22 +66,6 @@ Diagnosify/
 └── README.md
 ```
 
-
-### Frontend Deployment (Vercel)
-
-1. **Deploy to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Set root directory to `Frontend`
-   - Configure build settings:
-     - **Framework Preset**: Vite
-     - **Build Command**: `npm run build`
-     - **Output Directory**: `dist`
-
-2. **Environment Variables**
-   - Add `VITE_API_URL` with your Render backend URL
-   - Example: `https://your-backend-name.onrender.com`
-
 ## 🔄 API Endpoints
 
 ### Base URL: `https://your-backend.onrender.com`
