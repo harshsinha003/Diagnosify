@@ -67,17 +67,6 @@ Diagnosify/
 ```
 
 
-   - Create a new Web Service
-   - Select the `Python` directory as root directory
-   - Configure build settings:
-     - **Environment**: Python 3
-     - **Build Command**: `pip install -r requirements.txt`
-     - **Start Command**: `gunicorn app:app`
-     - **Auto-Deploy**: Yes
-
-3. **Environment Variables** (Optional)
-   - Add any environment variables if needed
-
 ### Frontend Deployment (Vercel)
 
 1. **Deploy to Vercel**
