@@ -66,20 +66,7 @@ Diagnosify/
 └── README.md
 ```
 
-## 🚀 Deployment
 
-### Backend Deployment (Render)
-
-1. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Deploy backend"
-   git push origin main
-   ```
-
-2. **Create Render Web Service**
-   - Go to [render.com](https://render.com)
-   - Connect your GitHub repository
    - Create a new Web Service
    - Select the `Python` directory as root directory
    - Configure build settings:
