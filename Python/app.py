@@ -92,6 +92,10 @@ def predict():
 
         df = pd.DataFrame([data], columns=feature_columns)
         print(f"Created dataframe with shape: {df.shape}")
+        
+        # Fill NaN values with 0 (symptoms not selected)
+        df = df.fillna(0)
+        print(f"After filling NaN: {df.isnull().sum().sum()} null values remaining")
 
         output = model.predict(df)
         print(f"Prediction: {output[0]}")
