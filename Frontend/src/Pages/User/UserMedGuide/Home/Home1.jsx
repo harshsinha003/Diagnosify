@@ -92,52 +92,20 @@
 
 //----------------------------------------------------------------------------------------------
 //New code with the opacity because of the black overlay
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import BackgroundVideo from "../../../../Components/BackgroundVideo";
 
 
 const Home1 = () => {
   const navigate = useNavigate();
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      // Set a small delay to ensure DOM is ready
-      const timer = setTimeout(() => {
-        videoRef.current?.play().catch(err => {
-          console.log("Video autoplay prevented, using gradient fallback");
-        });
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   return (
     <div id="home" className="relative w-full h-screen overflow-hidden">
-      {/* Video Background with gradient fallback */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full"
-        style={{
-          zIndex: 0,
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-        }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-          style={{ objectFit: 'cover' }}
-        >
-          <source src="/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      {/* Video Background Component */}
+      <BackgroundVideo />
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 2 }} className="flex flex-col items-center justify-center w-full h-screen">
