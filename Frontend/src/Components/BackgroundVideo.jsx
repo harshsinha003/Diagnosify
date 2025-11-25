@@ -1,17 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const BackgroundVideo = () => {
   const videoRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
-      // Set a small delay to ensure DOM is ready
-      const timer = setTimeout(() => {
-        videoRef.current?.play().catch(err => {
+      // Preload video in background
+      const video = videoRef.current;
+      
+      // Show gradient until video is ready
+      video.addEventListener('loadeddata', () => {
+        setIsLoaded(true);
+        video.play().catch(err => {
           console.error('Video autoplay failed:', err);
         });
-      }, 100);
-      return () => clearTimeout(timer);
+      });
     }
   }, []); // Empty dependency array ensures this component never re-renders
 
@@ -29,16 +33,19 @@ const BackgroundVideo = () => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
+        poster="/video-poster.jpg"
         className="w-full h-full object-cover"
-        style={{ objectFit: 'cover' }}
+        style={{ 
+          objectFit: 'cover',
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 1s ease-in-out'
+        }}
         onError={(e) => {
           console.error('Video failed to load:', e);
         }}
       >
-        {/* Replace with your Google Drive or Cloudinary URL */}
         <source src="/background.mp4?v=7" type="video/mp4" />
-        {/* Example: <source src="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" type="video/mp4" /> */}
         Your browser does not support the video tag.
       </video>
     </div>
