@@ -33,7 +33,7 @@ const GlobalHome = () => {
 					playsInline
 					className="w-full h-full object-cover"
 				>
-					<source src="/background.mp4" type="video/mp4" />
+					<source src="/background.mp4?v=2" type="video/mp4" />
 				</video>
 			</div>
 
