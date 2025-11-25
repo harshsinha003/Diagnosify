@@ -521,12 +521,16 @@ const Home_2 = () => {
       >
         <video
           ref={videoRef}
+          autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
         >
-          <source src="/background.mp4?v=3" type="video/mp4" />
+          <source src="/background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
       </div>
 
