@@ -11,6 +11,14 @@
   ],
   "routes": [
     {
+      "src": "/background.mp4",
+      "headers": {
+        "Content-Type": "video/mp4",
+        "Cache-Control": "public, max-age=31536000"
+      },
+      "dest": "/background.mp4"
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },

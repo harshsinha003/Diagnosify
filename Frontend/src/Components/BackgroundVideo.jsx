@@ -29,11 +29,16 @@ const BackgroundVideo = () => {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="w-full h-full object-cover"
         style={{ objectFit: 'cover' }}
+        onError={(e) => {
+          console.error('Video failed to load:', e);
+        }}
       >
-        <source src="/background.mp4?v=6" type="video/mp4" />
+        {/* Replace with your Google Drive or Cloudinary URL */}
+        <source src="/background.mp4?v=7" type="video/mp4" />
+        {/* Example: <source src="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" type="video/mp4" /> */}
         Your browser does not support the video tag.
       </video>
     </div>
