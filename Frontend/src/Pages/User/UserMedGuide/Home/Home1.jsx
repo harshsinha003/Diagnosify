@@ -104,24 +104,36 @@ const Home1 = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(err => console.error("Video error:", err));
+      // Set a small delay to ensure DOM is ready
+      const timer = setTimeout(() => {
+        videoRef.current?.play().catch(err => {
+          console.log("Video autoplay prevented, using gradient fallback");
+        });
+      }, 100);
+      return () => clearTimeout(timer);
     }
   }, []);
 
   return (
     <div id="home" className="relative w-full h-screen overflow-hidden">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
-        style={{ zIndex: 0 }}
+      {/* Video Background with gradient fallback */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full"
+        style={{
+          zIndex: 0,
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        }}
       >
-        <source src="/background.mp4" type="video/mp4" />
-      </video>
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/background.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 2 }} className="flex flex-col items-center justify-center w-full h-screen">

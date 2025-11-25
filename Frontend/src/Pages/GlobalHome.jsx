@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -6,20 +6,36 @@ import { useNavigate } from "react-router-dom";
 
 const GlobalHome = () => {
 	const navigate = useNavigate();
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		if (videoRef.current) {
+			videoRef.current.play().catch(err => {
+				console.log("Video autoplay prevented:", err);
+			});
+		}
+	}, []);
+
 	return (
 		<div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-			{/* Video Background */}
-			<video
-				autoPlay
-				loop
-				muted
-				playsInline
-				className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
-				style={{ zIndex: 0 }}
+			{/* Video Background with gradient fallback */}
+			<div 
+				className="absolute top-0 left-0 w-full h-full"
+				style={{
+					zIndex: 0,
+					background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+				}}
 			>
-				<source src="/background.mp4" type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
+				<video
+					ref={videoRef}
+					loop
+					muted
+					playsInline
+					className="w-full h-full object-cover"
+				>
+					<source src="/background.mp4" type="video/mp4" />
+				</video>
+			</div>
 
 			{/* Dark Overlay for better text readability */}
 			<div
